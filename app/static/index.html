@@ -1,0 +1,29 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PingPong AI - 识别</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header>
+    <h1>PingPong AI</h1>
+    <p>上传视频 → 识别动作 → 评分 → 建议</p>
+    <p><a class="link" href="/admin">管理员训练入口</a></p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>上传视频并识别</h2>
+      <form id="predict-form">
+        <input type="file" name="file" accept="video/*" required />
+        <button type="submit">识别动作</button>
+      </form>
+      <div id="predict-result" class="result"></div>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

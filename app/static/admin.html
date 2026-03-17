@@ -1,0 +1,42 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PingPong AI - 管理员</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header>
+    <h1>管理员训练面板</h1>
+    <p>仅已登录的管理员可见。未登录会自动跳回登录页。</p>
+    <p><a class="link" href="/">返回识别页</a></p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>快速标注 + 训练</h2>
+      <form id="annotate-form">
+        <input type="file" name="file" accept="video/*" required />
+        <select name="label_id" id="label-select"></select>
+        <button type="submit">上传并训练</button>
+      </form>
+      <div id="annotate-status" class="result"></div>
+    </section>
+
+    <section class="card">
+      <h2>重新全量训练</h2>
+      <form id="train-form">
+        <button type="submit">开始训练</button>
+      </form>
+      <div id="train-status" class="result"></div>
+    </section>
+  </main>
+
+  <footer>
+    <small>管理员操作会写入日志。</small>
+  </footer>
+
+  <script src="/static/admin.js"></script>
+</body>
+</html>

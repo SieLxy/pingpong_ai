@@ -1,0 +1,48 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>管理员登录 - PingPong AI</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header>
+    <h1>管理员登录</h1>
+    <p>请输入管理员密码进入训练面板。</p>
+    <p><a class="link" href="/">返回识别页</a></p>
+  </header>
+
+  <main>
+    <section class="card">
+      <form id="login-form">
+        <input type="password" name="password" id="admin-pass" placeholder="管理员密码" required />
+        <button type="submit">登录</button>
+      </form>
+      <div id="login-status" class="result"></div>
+    </section>
+  </main>
+
+  <footer>
+    <small>授权用户限定。</small>
+  </footer>
+
+  <script>
+    const form = document.getElementById('login-form');
+    const statusEl = document.getElementById('login-status');
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      statusEl.textContent = '验证中...';
+      const formData = new FormData(form);
+      const res = await fetch('/admin/login', { method: 'POST', body: formData, credentials: 'same-origin' });
+      const data = await res.json();
+      if (!res.ok) {
+        statusEl.textContent = `错误: ${data.detail || res.status}`;
+        return;
+      }
+      statusEl.textContent = '登录成功，正在跳转...';
+      window.location.href = '/admin';
+    });
+  </script>
+</body>
+</html>
